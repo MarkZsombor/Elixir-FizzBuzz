@@ -19,7 +19,8 @@ defmodule Fizzbuzz do
   end
 
   def printValue(num) do
-    IO.puts(getValue(num))
+    # IO.puts(getValue(num))
+    IO.puts(altGetValue(num))
     printValue(num+1)
   end
 
@@ -50,4 +51,25 @@ defmodule Fizzbuzz do
     ""
   end
 
+
+  # Alternative approach
+  def altGetValue(num) do
+    getValue(rem(num, 3), rem(num, 5), num)
+  end
+
+  def getValue(0, 0, _) do
+    "FizzBuzz"
+  end  
+  
+  def getValue(0, _, _) do
+    "Fizz"
+  end  
+
+  def getValue(_, 0, _) do
+    "Buzz"
+  end
+
+  def getValue(_, _, num) do
+    num
+  end
 end
