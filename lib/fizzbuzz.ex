@@ -13,30 +13,29 @@ defmodule Fizzbuzz do
   end
 
   @doc """
-  Recursive function that will print the value of the getValue function
+  Recursive function that will print the value of the getValues function
   """
   def printValue(num) when num > 100 do
   end
 
   def printValue(num) do
-    # IO.puts(getValue(num))
-    IO.puts(altGetValue(num))
+    IO.puts(getValues(num))
     printValue(num+1)
   end
 
   @doc """
   Resonsible for determining what should be printed for each value
   """
-  def getValue(num) when rem(num, 3) == 0 do
+  def getValues(num) when rem(num, 3) == 0 do
     # Check if also divisible by 15
     "Fizz" <> getValueFor5(num)
   end
 
-  def getValue(num) when rem(num, 5) == 0 do
+  def getValues(num) when rem(num, 5) == 0 do
     getValueFor5(num)
   end
 
-  def getValue(num) do
+  def getValues(num) do
     num
   end
 
@@ -53,7 +52,11 @@ defmodule Fizzbuzz do
 
 
   # Alternative approach
-  def altGetValue(num) do
+  def fb2() do
+    Enum.each(1..100, fn x -> IO.puts(getValue(x)) end)
+  end
+
+  def getValue(num) do
     getValue(rem(num, 3), rem(num, 5), num)
   end
 
