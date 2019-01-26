@@ -20,7 +20,7 @@ defmodule Fizzbuzz do
 
   def printValue(num) do
     IO.puts(getValues(num))
-    printValue(num+1)
+    printValue(num + 1)
   end
 
   @doc """
@@ -50,29 +50,17 @@ defmodule Fizzbuzz do
     ""
   end
 
-
   # Alternative approach
   def fb2() do
-    Enum.each(1..100, fn x -> IO.puts(getValue(x)) end)
+    Enum.each(1..100, fn n -> n |> getValue() |> IO.puts() end)
   end
 
-  def getValue(num) do
+  defp getValue(num) do
     getValue(rem(num, 3), rem(num, 5), num)
   end
 
-  def getValue(0, 0, _) do
-    "FizzBuzz"
-  end  
-  
-  def getValue(0, _, _) do
-    "Fizz"
-  end  
-
-  def getValue(_, 0, _) do
-    "Buzz"
-  end
-
-  def getValue(_, _, num) do
-    num
-  end
+  defp getValue(0, 0, _), do: "FizzBuzz"
+  defp getValue(0, _, _), do: "Fizz"
+  defp getValue(_, 0, _), do: "Buzz"
+  defp getValue(_, _, num), do: num
 end
