@@ -52,15 +52,15 @@ defmodule Fizzbuzz do
 
   # Alternative approach
   def fb2() do
-    Enum.each(1..100, fn n -> n |> getValue() |> IO.puts() end)
+    Enum.each(1..100, fn n ->
+      n
+      |> getValue(rem(n, 3), rem(n, 5))
+      |> IO.puts()
+    end)
   end
 
-  defp getValue(num) do
-    getValue(rem(num, 3), rem(num, 5), num)
-  end
-
-  defp getValue(0, 0, _), do: "FizzBuzz"
-  defp getValue(0, _, _), do: "Fizz"
-  defp getValue(_, 0, _), do: "Buzz"
-  defp getValue(_, _, num), do: num
+  defp getValue(_, 0, 0), do: "FizzBuzz"
+  defp getValue(_, 0, _), do: "Fizz"
+  defp getValue(_, _, 0), do: "Buzz"
+  defp getValue(n, _, _), do: n
 end
